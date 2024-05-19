@@ -1,11 +1,15 @@
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
 
+local intelephense_capabilities = vim.lsp.protocol.make_client_capabilities()
+intelephense_capabilities.textDocument.hover.dynamicRegistration = false
+intelephense_capabilities.textDocument.signatureHelp.dynamicRegistration = false
+
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
 
-  ---@class opts AstroLSPOpts
+  ---@type AstroLSPOpts
   opts = {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
@@ -33,7 +37,8 @@ return {
       -- "clangd",
       "glas",
       "gleam",
-      "psalmls",
+      "intelephense",
+      -- "psalmls",
       "v_analyzer",
     },
 
@@ -50,6 +55,7 @@ return {
     },
 
     -- LSP configuration
+    ---@diagnostic disable: missing-fields
     config = {
       -- clangd = {
       --   capabilities = vim.lsp.protocol.make_client_capabilities(),
@@ -113,6 +119,15 @@ return {
         },
       },
 
+      -- Intelephense for PHP
+      intelephense = {
+        capabilities = intelephense_capabilities,
+        cmd = { "intelephense", "--stdio" },
+        root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
+        filetypes = { "php" },
+        single_file_support = true,
+      },
+
       -- Psalm for PHP
       psalmls = {
         cmd = { "psalm-language-server" },
@@ -131,6 +146,17 @@ return {
         single_file_support = true,
       },
     },
+
+    on_attach = function(client, bufnr)
+      -- Only really use intellephense for formatting and PHP-IN-HTML support, phpactor is better for everything else
+      if client.name == "intelephense" then
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.inlayHintProvider = false
+        client.server_capabilities.documentHighlightProvider = false
+        client.server_capabilities.inlineCompletionProvider = false
+        client.server_capabilities.completionProvider = nil
+      end
+    end,
 
     -- autocmds = {
     --   -- first key is the `augroup` to add the auto commands to (:h augroup)

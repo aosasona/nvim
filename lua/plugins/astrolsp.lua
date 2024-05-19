@@ -1,10 +1,6 @@
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
 
-local intelephense_capabilities = vim.lsp.protocol.make_client_capabilities()
-intelephense_capabilities.textDocument.hover.dynamicRegistration = false
-intelephense_capabilities.textDocument.signatureHelp.dynamicRegistration = false
-
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -37,7 +33,6 @@ return {
       -- "clangd",
       "glas",
       "gleam",
-      "intelephense",
       -- "psalmls",
       "v_analyzer",
     },
@@ -117,15 +112,6 @@ return {
             staticcheck = true,
           },
         },
-      },
-
-      -- Intelephense for PHP
-      intelephense = {
-        capabilities = intelephense_capabilities,
-        cmd = { "intelephense", "--stdio" },
-        root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
-        filetypes = { "php" },
-        single_file_support = true,
       },
 
       -- Psalm for PHP

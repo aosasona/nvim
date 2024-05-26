@@ -4,6 +4,7 @@ return {
   "jidn/vim-dbml",
   "tpope/vim-surround",
   "tpope/vim-sleuth",
+  "sigmasd/deno-nvim",
   {
     "folke/ts-comments.nvim",
     opts = {},

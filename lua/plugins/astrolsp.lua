@@ -133,7 +133,7 @@ return {
       },
     },
 
-    on_attach = function(client, bufnr)
+    on_attach = function(client, _)
       -- Only really use intellephense for formatting and PHP-IN-HTML support, phpactor is better for everything else
       if client.name == "intelephense" then
         client.server_capabilities.hoverProvider = false

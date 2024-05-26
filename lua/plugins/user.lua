@@ -5,6 +5,12 @@ return {
   "tpope/vim-surround",
   "tpope/vim-sleuth",
   {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
+  },
+  {
     "TobinPalmer/rayso.nvim",
     cmd = { "Rayso" },
     config = function()

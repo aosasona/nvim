@@ -17,7 +17,7 @@ return {
   -- { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.tailwindcss" },
-  { import = "astrocommunity.pack.typescript" },
+  -- { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.zig" },
 
   -- Colorschemes

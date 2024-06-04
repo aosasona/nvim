@@ -204,6 +204,10 @@ return {
         -- ["<C-\\>"] = { 'copilot#Accept("<CR>")', noremap = true, silent = true, expr = true, replace_keycodes = false },
       },
       x = {
+        -- move line(s)
+        ["J"] = { ":move '>+1<cr>gv-gv", desc = "Move line(s) down" },
+        ["K"] = { ":move '<-2<cr>gv-gv", desc = "Move line(s) up" },
+
         -- better increment/decrement
         ["+"] = { "g<C-a>", desc = "Increment number" },
         ["-"] = { "g<C-x>", desc = "Decrement number" },

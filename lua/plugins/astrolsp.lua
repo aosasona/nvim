@@ -33,6 +33,7 @@ return {
       -- "clangd",
       "glas",
       "gleam",
+      "sourcekit-lsp",
       -- "psalmls",
       "v_analyzer",
     },
@@ -52,43 +53,7 @@ return {
     -- LSP configuration
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = {
-      --   capabilities = vim.lsp.protocol.make_client_capabilities(),
-      --   cmd = {
-      --     "clangd",
-      --     "--offset-encoding=utf-16",
-      --     "--background-index",
-      --     "--clang-tidy",
-      --     "--cross-file-rename",
-      --     "--fallback-style=Google",
-      --     "--enable-config",
-      --     "--header-insertion=iwyu",
-      --     "-j=4",
-      --     "--suggest-missing-includes",
-      --     "--header-insertion=iwyu",
-      --     "--completion-style=detailed",
-      --   },
-      --   root_dir = function(fname)
-      --     local root_files = {
-      --       ".clangd",
-      --       ".clang-tidy",
-      --       ".clang-format",
-      --       "compile_commands.json",
-      --       "compile_flags.txt",
-      --       "build.sh", -- buildProject
-      --       "configure.ac", -- AutoTools
-      --       "run",
-      --       "compile",
-      --       "build.zig", -- using zig as a build system
-      --     }
-      --
-      --     return require("lspconfig.util").root_pattern(unpack(root_files))(fname)
-      --       or require("lspconfig.util").path.dirname(fname)
-      --   end,
-      --   filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
-      --   single_file_support = true,
-      -- },
-
+      -- Clangd for C/C++
       clangd = {
         capabilities = {
           offsetEncoding = "utf-8",
@@ -123,7 +88,25 @@ return {
         single_file_support = true,
       },
 
-      -- Glas for Gleam language
+      -- Sourcekit for Swift
+      ["sourcekit-lsp"] = {
+        -- cmd = { "sourcekit-lsp" },
+        cmd = {
+          "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+        },
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        root_dir = function(filename, _)
+          local util = require "lspconfig.util"
+          return util.root_pattern "buildServer.json"(filename)
+            or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+            or util.root_pattern "Package.swift"(filename)
+            or util.find_git_ancestor(filename)
+        end,
+        filetypes = { "swift" },
+        single_file_support = true,
+      },
+
+      -- V-analyzer for V language
       v_analyzer = {
         cmd = { "/Users/ayodeji/.config/v-analyzer/bin/v-analyzer" },
         capabilities = vim.lsp.protocol.make_client_capabilities(),

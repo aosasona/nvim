@@ -16,6 +16,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   -- { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.pack.rust" },
+  -- { import = "astrocommunity.pack.swift" },
   { import = "astrocommunity.pack.tailwindcss" },
   -- { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.zig" },

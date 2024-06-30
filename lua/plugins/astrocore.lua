@@ -12,6 +12,18 @@
 --   },
 --   filetype = "gleam",
 -- }
+--
+
+--- Crystal tree-sitter parser
+---@class ParserInfo
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.crystal = {
+  install_info = {
+    url = "~/personal/grammars/tree-sitter-crystal",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "crystal",
+}
 
 local user_utils = require "utils"
 

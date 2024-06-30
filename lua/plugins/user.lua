@@ -5,6 +5,7 @@ return {
   "tpope/vim-surround",
   "tpope/vim-sleuth",
   "sigmasd/deno-nvim",
+  "vim-crystal/vim-crystal",
   {
     "folke/ts-comments.nvim",
     opts = {},

@@ -203,6 +203,18 @@ return {
         -- Laravel
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
 
+        -- Override telescope find files
+        ["<Leader>ff"] = {
+          function()
+            require("telescope.builtin").find_files {
+              hidden = true,
+              no_ignore = true,
+              file_ignore_patterns = { ".git/", "node_modules/" },
+            }
+          end,
+          desc = "Find all files",
+        },
+
         -- Dadbod
         -- ["<leader>dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle dadbod UI" },
       },

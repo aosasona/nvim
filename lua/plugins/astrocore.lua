@@ -83,6 +83,12 @@ return {
         n = { user_utils.better_search "n", desc = "Next search" },
         N = { user_utils.better_search "N", desc = "Previous search" },
 
+        -- Toggle inlay hints
+        ["<leader>lH"] = {
+          function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end,
+          desc = "Toggle inlay hints",
+        },
+
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
           function()
@@ -152,33 +158,24 @@ return {
         },
 
         -- Trouble.nvim
-        ["<leader>xx"] = { function() require("trouble").toggle() end, desc = "Show trouble" },
-        ["<leader>xc"] = { function() require("trouble").close() end, desc = "Close trouble" },
-        ["<leader>xw"] = {
-          function() require("trouble").toggle "workspace_diagnostics" end,
-          desc = "Workspace diagnostics",
+        ["<leader>x"] = { desc = "Trouble" },
+        ["<leader>xx"] = { "<cmd>Trouble diagnostics toggle focus=true<cr>", desc = "Diagnostics (Trouble)" },
+        ["<leader>xb"] = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+        ["<leader>xs"] = {
+          "<cmd>Trouble symbols toggle pinned=true results.win.relative=win results.win.position=right<cr>",
+          desc = "Symbols (Trouble)",
         },
-        ["<leader>xd"] = {
-          function() require("trouble").toggle "document_diagnostics" end,
-          desc = "Document diagnostics",
+        ["<leader>xL"] = {
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+          desc = "LSP Definitions / references / ... (Trouble)",
         },
-        ["<leader>xq"] = { function() require("trouble").toggle "quickfix" end, desc = "Quickfix" },
-        ["<leader>xl"] = { function() require("trouble").toggle "loclist" end, desc = "Location list" },
-        ["<leader>xk"] = {
-          function() require("trouble").previous { skip_groups = false, jump = true } end,
-          desc = "Previous item",
-        },
-        ["<leader>xj"] = {
-          function() require("trouble").next { skip_groups = false, jump = true } end,
-          desc = "Next item",
-        },
-        ["<leader>xg"] = {
-          function() require("trouble").last { skip_groups = false, jump = true } end,
-          desc = "Last item",
-        },
-        ["gR"] = { function() require("trouble").toggle "lsp_references" end },
+        ["<leader>xk"] = { "<cmd>Trouble diagnostics prev<cr>", desc = "Previous item" },
+        ["<leader>xj"] = { "<cmd>Trouble diagnostics next<cr>", desc = "Next item" },
+        ["<leader>xl"] = { "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+        ["<leader>xq"] = { "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
 
         -- Sourcegraph (cody)
+        ["<Leader>s"] = { desc = "Sourcegraph" },
         ["<leader>ss"] = {
           function() require("sg.extensions.telescope").fuzzy_search_results() end,
           desc = "Search using Sourcegraph",
@@ -204,16 +201,16 @@ return {
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
 
         -- Override telescope find files
-        ["<Leader>ff"] = {
-          function()
-            require("telescope.builtin").find_files {
-              hidden = true,
-              no_ignore = true,
-              file_ignore_patterns = { ".git/", "node_modules/" },
-            }
-          end,
-          desc = "Find all files",
-        },
+        -- ["<Leader>ff"] = {
+        --   function()
+        --     require("telescope.builtin").find_files {
+        --       hidden = true,
+        --       no_ignore = true,
+        --       file_ignore_patterns = { ".git/", "node_modules/" },
+        --     }
+        --   end,
+        --   desc = "Find all files",
+        -- },
 
         -- Dadbod
         -- ["<leader>dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle dadbod UI" },

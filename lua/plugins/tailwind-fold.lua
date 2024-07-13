@@ -5,7 +5,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("tailwind-fold").setup {
-      ft = { "html", "twig", "blade", "php", "svelte", "vue", "astro", "typescriptreact", "gleam" },
+      ft = { "html", "twig", "blade", "php", "svelte", "vue", "astro", "typescriptreact" },
     }
   end,
 }

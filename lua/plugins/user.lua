@@ -43,6 +43,7 @@ return {
   { "projekt0n/github-nvim-theme", lazy = false },
   {
     "folke/trouble.nvim",
+    lazy = false,
     dependencies = "nvim-tree/nvim-web-devicons",
   },
   {

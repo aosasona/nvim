@@ -83,6 +83,11 @@ return {
         n = { user_utils.better_search "n", desc = "Next search" },
         N = { user_utils.better_search "N", desc = "Previous search" },
 
+        ["gb"] = {
+          "<cmd>Gitsigns toggle_current_line_blame<cr>",
+          desc = "Toggle Git blame line",
+        },
+
         -- Toggle inlay hints
         ["<leader>lH"] = {
           function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end,

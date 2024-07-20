@@ -7,6 +7,12 @@ return {
   "sigmasd/deno-nvim",
   "vim-crystal/vim-crystal",
   {
+    "stevearc/oil.nvim",
+    opts = {},
+    lazy = false,
+    dependencies = { "echasnovski/mini.icons" },
+  },
+  {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",

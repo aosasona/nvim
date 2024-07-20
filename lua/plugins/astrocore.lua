@@ -202,6 +202,8 @@ return {
           desc = "Focus prompt pane",
         },
 
+        ["<leader>\\"] = { "<CMD>Oil --float<CR>", desc = "Open parent directory" },
+
         -- Laravel
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
 

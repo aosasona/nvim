@@ -1,5 +1,6 @@
 ---@type LazySpec
 return {
+  "nyoom-engineering/oxocarbon.nvim",
   "andweeb/presence.nvim",
   "jidn/vim-dbml",
   "tpope/vim-surround",

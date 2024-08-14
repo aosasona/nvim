@@ -207,6 +207,24 @@ return {
         -- Laravel
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
 
+        -- Grugfar
+        ["<leader>rf"] = {
+          function() require("grug-far").grug_far { prefills = { paths = vim.fn.expand "%" } } end,
+          desc = "Search and replace in current file",
+        },
+        ["<leader>rg"] = {
+          function() require("grug-far").grug_far { prefills = { paths = vim.fn.expand "%:p:h" } } end,
+          desc = "Search and replace in all files in the current directory",
+        },
+        ["<leader>rt"] = {
+          function() require("grug-far").grug_far { transient = true } end,
+          desc = "Launch GrugFar in a transient buffer",
+        },
+        ["<leader>rw"] = {
+          function() require("grug-far").grug_far { prefills = { search = vim.fn.expand "<cword>" } } end,
+          desc = "Launch GrugFar with the current word under the cursor",
+        },
+
         -- Override telescope find files
         -- ["<Leader>ff"] = {
         --   function()
@@ -236,6 +254,12 @@ return {
         ["J"] = { ":move '>+1<cr>gv-gv", desc = "Move line(s) down" },
         ["K"] = { ":move '<-2<cr>gv-gv", desc = "Move line(s) up" },
 
+        -- Search in Grugfar
+        ["<leader>rg"] = {
+          function() require("grug-far").with_visual_selection {} end,
+          desc = "Launch GrugFar with the current visual selection",
+        },
+
         -- better increment/decrement
         ["+"] = { "g<C-a>", desc = "Increment number" },
         ["-"] = { "g<C-x>", desc = "Decrement number" },
@@ -256,10 +280,6 @@ return {
         ["<leader>rf"] = { "<cmd>Refactor extract_to_file <cr>", desc = "Extract function to file" },
         ["<leader>rv"] = { "<cmd>Refactor extract_var <cr>", desc = "Extract variable" },
         ["<leader>ri"] = { "<cmd>Refactor inline_var<cr>", desc = "Inline variable" },
-        ["<leader>r`"] = {
-          function() require("refactoring").debug.print_var { show_success_message = true } end,
-          desc = "Debugging - print var",
-        },
       },
     },
   },

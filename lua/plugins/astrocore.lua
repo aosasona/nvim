@@ -225,6 +225,19 @@ return {
           desc = "Launch GrugFar with the current word under the cursor",
         },
 
+        -- Kulala bindings
+        ["<leader>k"] = { "", desc = "Kulala" },
+        ["<leader>kr"] = { function() require("kulala").run() end, desc = "Run the current request" },
+        ["<leader>kj"] = { function() require("kulala").jump_next() end, desc = "Jump to the next request" },
+        ["<leader>kk"] = { function() require("kulala").jump_prev() end, desc = "Jump to the previous request" },
+        ["<leader>ks"] = { function() require("kulala").scratchpad() end, desc = "Open the scratchpad" },
+        ["<leader>ky"] = {
+          function() require("kulala").copy() end,
+          desc = "Copy the current request as the curl command",
+        },
+        ["<leader>kq"] = { function() require("kulala").close() end, desc = "Closes the kulala window" },
+        ["<leader>k/"] = { function() require("kulala").search() end, desc = "Search for a request" },
+
         -- Override telescope find files
         -- ["<Leader>ff"] = {
         --   function()

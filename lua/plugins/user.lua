@@ -8,6 +8,10 @@ return {
   "sigmasd/deno-nvim",
   "vim-crystal/vim-crystal",
   {
+    "mistweaverco/kulala.nvim",
+    config = function() require("kulala").setup() end,
+  },
+  {
     "stevearc/oil.nvim",
     opts = {},
     lazy = false,

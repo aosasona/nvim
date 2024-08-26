@@ -238,6 +238,8 @@ return {
         ["<leader>kq"] = { function() require("kulala").close() end, desc = "Closes the kulala window" },
         ["<leader>k/"] = { function() require("kulala").search() end, desc = "Search for a request" },
 
+        ["<leader>lm"] = { "<cmd>:DockerComposeLogs<CR>", desc = "Show docker compose logs" },
+
         -- Override telescope find files
         -- ["<Leader>ff"] = {
         --   function()

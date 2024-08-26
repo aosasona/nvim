@@ -8,6 +8,18 @@ return {
   "sigmasd/deno-nvim",
   "vim-crystal/vim-crystal",
   {
+    "adelowo/dockercomposelogs.nvim",
+    config = function()
+      require("dockercomposelogs").setup {
+        logs_since = 15,
+      }
+    end,
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+  {
     "mistweaverco/kulala.nvim",
     config = function() require("kulala").setup() end,
   },

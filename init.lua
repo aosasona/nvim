@@ -15,6 +15,13 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+vim.filetype.add {
+  extension = {
+    ["http"] = "http",
+    ["mdx"] = "markdown",
+  },
+}
+
 -- Options for gruvbox-material
 vim.opt.termguicolors = true
 vim.g.gruvbox_material_background = "hard"

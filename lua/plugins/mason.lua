@@ -12,7 +12,7 @@ return {
         "clangd",
         "phpactor",
         "intelephense",
-        "tsserver",
+        -- "tsserver",
         -- "lua_ls",
         -- "cssls",
         -- "html",

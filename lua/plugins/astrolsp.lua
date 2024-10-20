@@ -107,6 +107,14 @@ return {
         single_file_support = true,
       },
 
+      -- Tinymist config for Typst
+      tinymist = {
+        offset_encoding = "utf-8",
+        settings = {
+          exportPdf = "onSave",
+        },
+      },
+
       -- V-analyzer for V language
       v_analyzer = {
         cmd = { "/Users/ayodeji/.config/v-analyzer/bin/v-analyzer" },

@@ -9,6 +9,12 @@ return {
   "vim-crystal/vim-crystal",
   "savq/melange-nvim",
   {
+    "chomosuke/typst-preview.nvim",
+    lazy = false, -- or ft = 'typst'
+    version = "1.*",
+    build = function() require("typst-preview").update() end,
+  },
+  {
     "adelowo/dockercomposelogs.nvim",
     config = function()
       require("dockercomposelogs").setup {

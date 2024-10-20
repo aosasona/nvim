@@ -25,6 +25,15 @@ parser_config.crystal = {
   filetype = "crystal",
 }
 
+-- C3 parser
+parser_config.c3 = {
+  install_info = {
+    url = "https://github.com/c3lang/tree-sitter-c3",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+}
+
 local user_utils = require "utils"
 
 ---@type LazySpec

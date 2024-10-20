@@ -40,7 +40,6 @@ return {
       "nix",
       "php",
       "regex",
-      "roc",
       "ruby",
       "rust",
       "scss",
@@ -55,7 +54,6 @@ return {
       "typescript",
       "v",
       "vim",
-      "vhs",
       "yaml",
       "zig",
       -- add more arguments for adding more treesitter parsers
